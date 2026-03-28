@@ -66,13 +66,13 @@
     }
 
     .card input {
-  width: 93%;
-  padding: 8px 10px;   /* 🔥 reduced height */
-  margin-bottom: 12px; /* tighter spacing */
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  font-size: 13px;
-}
+    width: 93%;
+    padding: 8px 10px;   /* 🔥 reduced height */
+    margin-bottom: 12px; /* tighter spacing */
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 13px;
+    }
 
     .card input:focus {
       outline: none;
@@ -110,6 +110,41 @@
     /* IMAGE */
     .image img {
       width: 350px;
+    }
+
+    .popup {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.4s ease;
+    z-index: 999;
+    }
+
+    .popup.show {
+    top: 20px;
+    }
+
+    .popup-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    #popup-icon {
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-weight: bold;
+    }
+
+    #popup-text {
+    font-size: 14px;
     }
 
     /* RESPONSIVE */
@@ -171,21 +206,48 @@
       const password = document.getElementById("password").value;
 
       if (phone === "" || password === "") {
-        alert("Please fill all fields!");
+        showPopup("Please fill all fields!", "error");
         return;
       }
 
       // TEMP LOGIN (replace with backend later)
       if (phone === "1234567890" && password === "1234") {
-        alert("Login Successful ✅");
+        showPopup("Login Successful");
 
         window.location.href = "dashboard.html";
 
       } else {
-        alert("Invalid Credentials ❌");
+        showPopup("Invalid Credentials!", "error");
       }
     }
+    function showPopup(message, type="success") {
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popup-text");
+    const icon = document.getElementById("popup-icon");
+
+    text.innerText = message;
+
+    if(type === "error") {
+        icon.style.background = "red";
+        icon.innerText = "✖";
+    } else {
+        icon.style.background = "#22c55e";
+        icon.innerText = "✔";
+    }
+
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 2500);
+    }
   </script>
+  <div id="popup" class="popup">
+  <div class="popup-content">
+    <div id="popup-icon">✔</div>
+    <p id="popup-text"></p>
+  </div>
+</div>
 
 </body>
 </html>
