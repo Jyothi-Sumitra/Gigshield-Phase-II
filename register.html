@@ -122,35 +122,45 @@
       align-items: center;
     }
     .vehicle-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    }
 
-.vehicle-left {
-  display: flex;
-  flex-direction: column;
-}
+    .vehicle-left {
+    display: flex;
+    flex-direction: column;
+    }
 
-.vehicle-options {
-  display: flex;
-  gap: 15px;
-  margin-top: 5px;
-  font-size: 13px;
-}
+    .vehicle-options {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    /* margin-top: 5px;
+    font-size: 13px; */
+    }
+    .vehicle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
 
-.price {
-  background: #f1f5f9;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 13px;
-}
-.inline {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+    .vehicle-header .error {
+    margin: 0;
+    }
+
+    .price {
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    }
+    .inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    }
 
     .price {
       background: #f1f5f9;
@@ -202,9 +212,9 @@
     margin-top: 3px;
     }
 
-.input-error {
-  border: 1px solid red !important;
-}   
+    .input-error {
+    border: 1px solid red !important;
+    }   
 
     /* IMAGE */
     .image img {
@@ -217,6 +227,45 @@
       margin-top: 30px;
       color: #64748b;
       font-size: 13px;
+    }
+
+    .popup {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.4s ease;
+    z-index: 999;
+    }
+
+    .popup.show {
+    top: 20px;
+    }
+
+    .popup-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    #popup-icon {
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-weight: bold;
+    }
+
+    #popup-text {
+    font-size: 14px;
+    }
+    .req {
+    color: red;
+    margin-left: 2px;
     }
 
     @media(max-width: 768px) {
@@ -251,16 +300,16 @@
       <div class="card">
         <h3>Register as a Gig Worker</h3>
 
-        <label>Full Name</label>
+        <label>Full Name<span class="req">*</span></label>
         <input type="text" id="name">
         <small class="error" id="nameError"></small>
 
-        <label>Phone Number</label>
+        <label>Phone Number<span class="req">*</span></label>
         <input type="text" id="phone">
         <small class="error" id="phoneError"></small>
 
-        <label>Delivery Platform</label>
-        <select>
+        <label>Delivery Platform<span class="req">*</span></label>
+        <select id="platform">
           <option value="" disabled selected>Select Platform</option>
           <option>Zomato</option>
           <option>Swiggy</option>
@@ -270,20 +319,23 @@
         </select>
         <small class="error" id="platformError"></small>
 
-        <label>City</label>
+       <label>City<span class="req">*</span></label>
         <input type="text" id="city">
         <small class="error" id="cityError"></small>
 
         <div class="vehicle-row">
-
         <div class="vehicle-left">
-            <label>Vehicle</label>
+            <label>Vehicle<span class="req">*</span></label>
+            <!-- <small class="error" id="vehicleError"></small> -->
 
             <div class="vehicle-options">
-            <label class="inline">
-            <input type="checkbox" id="bike"> Bike
-            <input type="checkbox" id="scooter"> Scooter
-        </label>
+                <label class="inline">
+                    <input type="checkbox" id="bike"> Bike
+                </label>
+                <label class="inline">
+                    <input type="checkbox" id="scooter"> Scooter
+                </label>
+        
             </div>
         </div>
 
@@ -293,8 +345,9 @@
 
         <div class="terms">
         <label>
-            <input type="checkbox" id="terms"> I agree to Terms & Conditions
+            <input type="checkbox" id="terms"> I agree to Terms & Conditions<span class="req">*</span>
         </label>
+        <small class="error" id="termsError"></small>
         </div>
 
         <button onclick="register()">Register Now</button>
@@ -383,25 +436,57 @@
     isValid = false;
   }
 
-  // VEHICLE
-  if (!bike && !scooter) {
-    alert("Select at least one vehicle");
+    // VEHICLE
+    if (!bike && !scooter) {
+    showPopup("Please fill all the details!", "error");
     isValid = false;
-  }
+    }
 
-  // TERMS
-  if (!terms) {
-    alert("Accept terms & conditions");
+    // TERMS
+    if (!terms) {
+    document.getElementById("termsError").innerText = "Please accept terms and conditions";
     isValid = false;
-  }
+    }
 
   // FINAL
-  if (isValid) {
-    alert("Registered Successfully ✅");
-    window.location.href = "login.html";
-  }
+    if (isValid) 
+    {
+        showPopup("Account created successfully!" , "success");
+
+        setTimeout(() => 
+        {
+            window.location.href = "dashboard.html";
+        }, 2000);
+    }
 }
+    function showPopup(message, type="success") {
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popup-text");
+    const icon = document.getElementById("popup-icon");
+
+    text.innerText = message;
+
+    if(type === "error") {
+        icon.style.background = "red";
+        icon.innerText = "✖";
+    } else {
+        icon.style.background = "#22c55e";
+        icon.innerText = "✔";
+    }
+
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 2500);
+    }
   </script>
+  <div id="popup" class="popup">
+  <div class="popup-content">
+    <div id="popup-icon">✔</div>
+    <p id="popup-text"></p>
+  </div>
+</div>
 
 </body>
 </html>
