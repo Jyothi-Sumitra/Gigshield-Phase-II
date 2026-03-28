@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GigShield Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      color: #1e293b;
+    }
+
+    .navbar a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      color: #2563eb;
+    }
+
+    /* MAIN LAYOUT */
+    .main {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 85vh;
+      padding: 20px;
+    }
+
+    /* LOGIN CARD */
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 330px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-bottom: 5px;
+      color: #1e293b;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .card input {
+  width: 93%;
+  padding: 8px 10px;   /* 🔥 reduced height */
+  margin-bottom: 12px; /* tighter spacing */
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 13px;
+}
+
+    .card input:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    .link {
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .link a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    /* IMAGE */
+    .image img {
+      width: 350px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+      .main {
+        flex-direction: column;
+      }
+
+      .image img {
+        width: 250px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">🛡️ GigShield</div>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">How It Works</a>
+      <a href="#">Pricing</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- LOGIN FORM -->
+    <div class="card">
+      <h2>Welcome Back 👋</h2>
+      <p>Login to access your insurance dashboard</p>
+
+      <input type="text" id="phone" placeholder="Email / Phone Number">
+      <input type="password" id="password" placeholder="Password">
+
+      <button onclick="login()">Login</button>
+
+      <div class="link">
+        Don't have an account? <a href="register.html">Register</a>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image">
+      <img src="delivery-rider.png">
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function login() {
+      const phone = document.getElementById("phone").value;
+      const password = document.getElementById("password").value;
+
+      if (phone === "" || password === "") {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      // TEMP LOGIN (replace with backend later)
+      if (phone === "1234567890" && password === "1234") {
+        alert("Login Successful ✅");
+
+        window.location.href = "dashboard.html";
+
+      } else {
+        alert("Invalid Credentials ❌");
+      }
+    }
+  </script>
+
+</body>
+</html>
