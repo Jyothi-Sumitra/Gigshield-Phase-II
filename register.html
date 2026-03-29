@@ -17,12 +17,12 @@
 
     /* NAVBAR */
     .navbar {
-    height: 70px;        /* 🔥 controls navbar height */
-    overflow: visible;   /* allow image to overflow */
+    height: 70px;       
+    overflow: visible;   
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 30px;  /* reduce this */
+    padding: 12px 30px;  
     background: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     align-items: center;
@@ -35,7 +35,7 @@
     }
     
     .logo img {
-        height: 100px;   /* adjust if needed */
+        height: 100px;   
         object-fit: contain;
         }
 
@@ -51,7 +51,6 @@
       padding-bottom: 3px;
     }
 
-    /* MAIN */
     .main {
       display: flex;
       justify-content: center;
@@ -75,7 +74,6 @@
       margin-bottom: 20px;
     }
 
-    /* CARD */
     .card {
       background: white;
       padding: 25px;
@@ -147,8 +145,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    /* margin-top: 5px;
-    font-size: 13px; */
+  
     }
     .vehicle-header {
     display: flex;
@@ -195,7 +192,6 @@
       cursor: pointer;
     }
 
-    /* FEATURES */
     .features {
       display: flex;
       justify-content: center;
@@ -225,13 +221,11 @@
     .input-error {
     border: 1px solid red !important;
     }   
-
-    /* IMAGE */
+    
     .image img {
       width: 350px;
     }
-
-    /* FOOTER */
+    
     .footer {
       text-align: center;
       margin-top: 30px;
@@ -288,7 +282,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo">
         <img src="logo.png" alt="GigShield Logo">
@@ -301,10 +294,8 @@
     </div>
   </div>
 
-  <!-- MAIN -->
   <div class="main">
 
-    <!-- LEFT -->
     <div class="left">
       <h1>Worker Registration</h1>
       <p>Sign up to protect your income from disruptions!</p>
@@ -338,7 +329,6 @@
         <div class="vehicle-row">
         <div class="vehicle-left">
             <label>Vehicle<span class="req">*</span></label>
-            <!-- <small class="error" id="vehicleError"></small> -->
 
             <div class="vehicle-options">
                 <label class="inline">
@@ -366,14 +356,12 @@
       </div>
     </div>
 
-    <!-- RIGHT IMAGE -->
     <div class="image">
       <img src="delivery-rider.png">
     </div>
 
   </div>
 
-  <!-- FEATURES -->
   <div class="features">
     <div class="feature">
       <h4>🌧️ Weather Alerts</h4>
@@ -391,16 +379,13 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     © 2026 GigShield. All rights reserved.
   </div>
 
-  <!-- SCRIPT -->
   <script>
     function register() {
 
-  // get values
   const name = document.getElementById("name");
   const phone = document.getElementById("phone");
   const platform = document.getElementById("platform");
@@ -410,20 +395,17 @@
   const scooter = document.getElementById("scooter").checked;
   const terms = document.getElementById("terms").checked;
 
-  // reset errors
   document.querySelectorAll(".error").forEach(e => e.innerText = "");
   document.querySelectorAll("input, select").forEach(e => e.classList.remove("input-error"));
 
   let isValid = true;
 
-  // NAME
   if (name.value.trim() === "") {
     document.getElementById("nameError").innerText = "Name is required";
     name.classList.add("input-error");
     isValid = false;
   }
 
-  // PHONE
   if (phone.value.trim() === "") {
     document.getElementById("phoneError").innerText = "Phone Number is required";
     phone.classList.add("input-error");
@@ -434,33 +416,28 @@
     isValid = false;
   }
 
-  // PLATFORM
   if (!platform.value) {
     document.getElementById("platformError").innerText = "Select a platform";
     platform.classList.add("input-error");
     isValid = false;
   }
 
-  // CITY
   if (city.value.trim() === "") {
     document.getElementById("cityError").innerText = "City is required";
     city.classList.add("input-error");
     isValid = false;
   }
 
-    // VEHICLE
     if (!bike && !scooter) {
     showPopup("Please fill all the details!", "error");
     isValid = false;
     }
 
-    // TERMS
     if (!terms) {
     document.getElementById("termsError").innerText = "Please accept terms and conditions";
     isValid = false;
     }
 
-  // FINAL
     if (isValid) 
     {
         showPopup("Account created successfully!" , "success");
@@ -478,7 +455,6 @@
     vehicle: bike ? "Bike" : "Scooter"
   };
 
-  // save to browser
   localStorage.setItem("gigUser", JSON.stringify(userData));
   }
     function showPopup(message, type="success") {
