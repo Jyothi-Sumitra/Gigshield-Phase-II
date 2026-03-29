@@ -12,7 +12,6 @@
       background: linear-gradient(135deg, #4472d7, #a6d3e7);
     }
 
-    /* NAVBAR */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -30,7 +29,6 @@
       opacity: 1;
     }
 
-    /* HEADER */
     .header {
       text-align: center;
       margin-top: 50px;
@@ -55,7 +53,6 @@
       margin: auto;
     }
 
-    /* STEPS */
     .steps {
       display: flex;
       justify-content: center;
@@ -97,7 +94,6 @@
       opacity: 0.5;
     }
 
-    /* IMAGE */
     .card img {
       width: 100%;
       margin-top: 15px;
@@ -124,24 +120,19 @@
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div><b>🛡️ GigShield</b></div>
   <div>
     <a href="login.html">Back</a>
-    <!-- <a href="#">How it works</a> -->
-    <!-- <a href="support.html">Support</a> -->
   </div>
 </div>
 
-<!-- HEADER -->
 <div class="header">
   <div class="tag">How it works</div>
   <h1>3 Easy Steps to Protect Your Income</h1>
   <p>GigShield helps delivery workers stay protected from disruptions like rain, heat, and unexpected issues.</p>
 </div>
 
-<!-- STEPS -->
 <div class="steps">
 
   <div class="card">
@@ -183,7 +174,7 @@
     cards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add("show");
-      }, index * 300); // 🔥 delay between cards
+      }, index * 300);
     });
   });
 </script>
