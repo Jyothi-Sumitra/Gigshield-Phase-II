@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insurance Plans</title>
+  <link rel="icon" href="logofav.png" type="image/jpeg">
+
+  <style>
+        body {
+    margin: 0;
+    font-family: Arial;
+    background: #f5f7fb;
+    color: #1e293b;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;   /* 👈 IMPORTANT */
+    }
+
+    .plans {
+    flex: 1;   /* 👈 pushes footer down */
+    }
+
+/* NAVBAR */
+.navbar {
+    height: 60px;        /* 🔥 controls navbar height */
+    overflow: visible;   /* allow image to overflow */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 30px;  /* reduce this */
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .logo img {
+        height: 120px;   /* adjust if needed */
+        object-fit: contain;
+        }
+
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #334155;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #64748b;
+}
+
+/* PLANS */
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  width: 260px;
+  padding: 25px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* HIGHLIGHT PLAN */
+.highlight {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  transform: scale(1.1);
+  border: none;
+}
+
+.highlight .features p {
+  color: #e0e7ff;
+}
+
+.highlight .btn {
+  background: white;
+  color: #2563eb;
+}
+
+/* TEXT */
+.card h2 {
+  text-align: center;
+}
+
+.price {
+  text-align: center;
+  font-size: 30px;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.features {
+  font-size: 14px;
+}
+
+.features p {
+  margin: 8px 0;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+    .footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #64748b;
+    background: transparent;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+  <div class="nav-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="support.html">Support</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Choose Your Protection Plan</h1>
+  <p>Smart protection for gig workers 🚀</p>
+</div>
+
+<!-- PLANS -->
+<div class="plans">
+
+  <!-- BASIC -->
+  <div class="card">
+    <h2>Basic</h2>
+    <div class="price">₹30/week</div>
+
+    <div class="features">
+      <p>✔ ₹2000/day coverage</p>
+      <p>✔ Weather protection</p>
+      <p>✔ 1 claim/week</p>
+    </div>
+
+    <button class="btn">Choose</button>
+  </div>
+
+  <!-- STANDARD -->
+  <div class="card highlight">
+    <h2>Standard ⭐</h2>
+    <div class="price">₹60/week</div>
+
+    <div class="features">
+      <p>✔ ₹4000/day coverage</p>
+      <p>✔ Weather + outage</p>
+      <p>✔ 3 claims/week</p>
+    </div>
+
+    <button class="btn">Choose</button>
+  </div>
+
+  <!-- PREMIUM -->
+  <div class="card">
+    <h2>Premium</h2>
+    <div class="price">₹100/week</div>
+
+    <div class="features">
+      <p>✔ ₹7000/day coverage</p>
+      <p>✔ All disruptions</p>
+      <p>✔ Unlimited claims</p>
+    </div>
+
+    <button class="btn">Choose</button>
+  </div>
+</div>
+<div class="footer">
+    © 2026 GigShield. All rights reserved.
+  </div>
+
+</body>
+</html>
