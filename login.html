@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GigShield Login</title>
+  <title>GigShield</title>
+  <link rel="icon" href="logofav.png" type="image/jpeg">
 
   <style>
     body {
@@ -13,6 +14,7 @@
     /* NAVBAR */
     .navbar {
       display: flex;
+      height: 25px; 
       justify-content: space-between;
       padding: 20px 40px;
       background: white;
@@ -20,9 +22,14 @@
     }
 
     .logo {
-      font-weight: bold;
-      font-size: 20px;
-      color: #1e293b;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo img {
+      max-height: 100px;   /* adjust if needed */
+      object-fit: contain;
     }
 
     .navbar a {
@@ -30,6 +37,7 @@
       text-decoration: none;
       color: #334155;
       font-weight: 500;
+      height: 70px; 
     }
 
     .navbar a:hover {
@@ -44,6 +52,7 @@
       height: 85vh;
       padding: 20px;
     }
+   
 
     /* LOGIN CARD */
     .card {
@@ -165,11 +174,11 @@
 
   <!-- NAVBAR -->
   <div class="navbar">
-    <div class="logo">🛡️ GigShield</div>
+    <div class="logo">
+        <img src="logo.png" alt="GigShield Logo">
+    </div>
     <div>
-      <a href="#">Home</a>
-      <a href="#">How It Works</a>
-      <a href="#">Pricing</a>
+      <a href="how-it-works.html">How It Works</a>
       <a href="#">Support</a>
     </div>
   </div>
